@@ -43,11 +43,8 @@ namespace IFQ563_Assignment2
         {
 #nullable disable
             string[] lines = File.ReadAllLines("savedGames.txt");
-            var index = 0;
-            Console.Write(gameName);
             if (gameName != null)
             {
-                Console.Write(lines[lines.Length - gameState].Split("-")[1]);
                 lines = lines.Where(c => c.Split("~")[0] == gameName).ToArray();
             }
         
