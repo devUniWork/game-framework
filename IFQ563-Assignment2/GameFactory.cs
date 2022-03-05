@@ -1,7 +1,7 @@
 ﻿using System;
 namespace IFQ563_Assignment2
 {
-    public class GameFactory
+    public class GameFactory : IGameFactory
     {
         public void CreateGame(RootMenuSelection gameChoice)
         {
@@ -10,7 +10,7 @@ namespace IFQ563_Assignment2
                 Menu menu = new Menu();
                 var menuSelection = menu.GameMenu("Welcome to TicTacToe.\n");
                 TicTacToe ticTacToe = new TicTacToe();
-                ticTacToe.play(menuSelection);
+                ticTacToe.Play(menuSelection);
             }
             if(gameChoice == RootMenuSelection.NineMensMorris)
             {
@@ -27,6 +27,14 @@ namespace IFQ563_Assignment2
             if(gameChoice == RootMenuSelection.HighScores)
             {
                 // load high score class
+            }
+
+            if(gameChoice == RootMenuSelection.About)
+            {
+                Documentation docs = new Documentation();
+                docs.About();
+                Game newGame = new Game();
+                newGame.Play();
             }
 
             if(gameChoice == RootMenuSelection.LoadGame)

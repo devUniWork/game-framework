@@ -7,6 +7,7 @@ namespace IFQ563_Assignment2
         RobotVsRobot = 2,
         LoadGame = 3,
         HighScores = 4,
-        Quit = 5
+        Rules = 5,
+        Quit = 6
     }
 }

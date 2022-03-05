@@ -6,7 +6,6 @@ namespace IFQ563_Assignment2
         public char[] GameBoard { get; set; }
         public string GameName { get; set; }
         public bool IsNewGame { get; set; }
-        //public string GameName { get; set; }
 
         public string writeBoardState()
         {

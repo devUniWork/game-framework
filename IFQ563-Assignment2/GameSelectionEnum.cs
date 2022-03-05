@@ -8,6 +8,7 @@ namespace IFQ563_Assignment2
         NineMensMorris = 3,
         LoadGame = 4,
         HighScores = 5,
-        Quit = 6
+        About = 6,
+        Quit = 7
     }
 }
