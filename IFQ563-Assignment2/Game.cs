@@ -1,7 +1,12 @@
 ﻿using System;
 namespace IFQ563_Assignment2
 {
-    public class Game 
+    public interface IGameInterface
+    {
+        public void Play();
+    }
+
+    public class Game : IGameInterface
     {
 
       public void Play()

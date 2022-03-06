@@ -11,6 +11,7 @@ namespace IFQ563_Assignment2
         static int flag = 0;
         static Piece piece;
         static Draw draw;
+        static AI ai;
         public void Introduction();
         public void Play(SubMenuGame gameSelection);
         public void GameLoop();

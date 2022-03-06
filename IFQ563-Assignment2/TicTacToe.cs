@@ -1,29 +1,60 @@
 ﻿using System;
-using System.Threading;
 
 namespace IFQ563_Assignment2
 
 {
     public class TicTacToe : IGame
     {
-        static char[] board =  new char[10] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        char[] board =  new char[10] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         static int choice;
         static int player = 1;
         int gameState = 2;
         bool newGame = true;
         static int flag = 0;
+        GameDifficulty difficulty = GameDifficulty.easy;
 
-        Piece piece = new Piece();
-        Draw draw = new Draw();
+        bool isPlayingComputer = false;
+
+
+        readonly Piece piece = new Piece();
+        readonly Draw draw = new Draw();
+        readonly AI ai = new AI();
+
+
 
         public void Introduction()
         {
             Console.WriteLine("Welcome to Tic Tac Toe.");
         }
 
+
+        public void SetDifficulty()
+        {
+            Menu menu = new Menu();
+            difficulty = menu.SelectGameDifficulty();            
+        }
+        // board could be its own type
+        public char[] ComputerTurn()
+        {
+            if(difficulty == GameDifficulty.easy)
+            {
+               return board = ai.EasyMode(board);
+            }  else
+            {
+               return board = ai.HardMode(board);
+            }
+        }
+
         public void Play(SubMenuGame gameSelection)
         {
-            Console.Write(gameSelection);
+
+            if(gameSelection == SubMenuGame.HumanVsComputer)
+            {
+                SetDifficulty();
+                isPlayingComputer = true;
+                draw.DrawBoard(board);
+                GameLoop();
+            }
             if (gameSelection == SubMenuGame.LoadGame)
             {
                 string loadGame = Load.loadGame("TicTacToe");
@@ -75,7 +106,16 @@ namespace IFQ563_Assignment2
                 Console.WriteLine("\n");
                 draw.DrawBoard(board);
 
-                choice = piece.GetNewPosition();
+
+                if(player % 2 == 0 && isPlayingComputer == true)
+                {
+                    board = ComputerTurn();
+                    player++;
+                } else
+                {
+                   choice = piece.GetNewPosition();
+                }
+               
 
                 if (choice == 10)
                 {

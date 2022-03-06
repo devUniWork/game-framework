@@ -28,6 +28,13 @@ namespace IFQ563_Assignment2
             Console.Write("Press 6 to quit\n");
             return (SubMenuGame)Convert.ToInt32(Console.ReadLine());
         }
-        
+
+        public GameDifficulty SelectGameDifficulty()
+        {
+            Console.Clear();
+            Console.Write("Press 1 for Easy Mode\n");
+            Console.Write("Press 2 for Hard Mode\n");
+            return (GameDifficulty)Convert.ToInt32(Console.ReadLine());
+        }
     }
 }
